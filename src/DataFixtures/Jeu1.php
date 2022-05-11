@@ -1,35 +1,34 @@
 <?php
 
 namespace App\DataFixtures;
+
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use App\Entity\Artist;
-use App\Entity\Disc;
+use App\Entity\Artiste;
+use App\Entity\Disque;
 class Jeu1 extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $artist1 = new Artist();
+        $artiste1 = new Artiste();
 
-$artist1->setName("Queens Of The Stone Age");
-$artist1->setUrl("https://qotsa.com/");
+$artiste1->setNom("Queens Of The Stone Age");
+$artiste1->setUrl("https://qotsa.com/");
 
-$manager->persist($artist1);
+$manager->persist($artiste1);
 
-$disc1 = new Disc();
-$disc1->setTitle("Songs for the Deaf");
-$disc1->setPicture("https://en.wikipedia.org/wiki/Songs_for_the_Deaf#/media/File:Queens_of_the_Stone_Age_-_Songs_for_the_Deaf.png");
-$disc1->setLabel("Interscope Records");
+   
+    $disque1 = new Disque();
+$disque1->setTitre("Songs for the Deaf");
+$disque1->setPicture("https://en.wikipedia.org/wiki/Songs_for_the_Deaf#/media/File:Queens_of_the_Stone_Age_-_Songs_for_the_Deaf.png");
+$disque1->setAnnee(1988);
+$disque1->setLabel("Interscope Records");
 
-$manager->persist($disc1);
+$manager->persist($disque1);
 
 // Pour associer vos entités
-$disc1->setArtist($artist1);
-// ou 
-$artist1->addDisc($disc1);
-
+$disque1->setArtiste($artiste1);
 $manager->flush();
 
-       
-    }
+}
 }

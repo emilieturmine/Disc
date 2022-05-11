@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Disque index{% endblock %}
+
+{% block body %}
+    <h1>Disque index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Annee</th>
+                <th>Picture</th>
+                <th>Label</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for disque in disques %}
+            <tr>
+                <td>{{ disque.id }}</td>
+                <td>{{ disque.titre }}</td>
+                <td>{{ disque.Annee }}</td>
+                <td>{{ disque.picture }}</td>
+                <td>{{ disque.label }}</td>
+                <td>
+                    <a href="{{ path('app_disque_show', {'id': disque.id}) }}">show</a>
+                    <a href="{{ path('app_disque_edit', {'id': disque.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_disque_new') }}">Create new</a>
+{% endblock %}

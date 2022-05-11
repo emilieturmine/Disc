@@ -2,32 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\Artist;
+use App\Entity\Disque;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Artist>
+ * @extends ServiceEntityRepository<Disque>
  *
- * @method Artist|null find($id, $lockMode = null, $lockVersion = null)
- * @method Artist|null findOneBy(array $criteria, array $orderBy = null)
- * @method Artist[]    findAll()
- * @method Artist[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Disque|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Disque|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Disque[]    findAll()
+ * @method Disque[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ArtistRepository extends ServiceEntityRepository
+class DisqueRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Artist::class);
+        parent::__construct($registry, Disque::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Artist $entity, bool $flush = false): void
+    public function add(Disque $entity, bool $flush = false): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -39,7 +39,7 @@ class ArtistRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Artist $entity, bool $flush = false): void
+    public function remove(Disque $entity, bool $flush = false): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -48,24 +48,24 @@ class ArtistRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Artist[] Returns an array of Artist objects
+//     * @return Disque[] Returns an array of Disque objects
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
+//        return $this->createQueryBuilder('d')
+//            ->andWhere('d.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
+//            ->orderBy('d.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Artist
+//    public function findOneBySomeField($value): ?Disque
 //    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
+//        return $this->createQueryBuilder('d')
+//            ->andWhere('d.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()
