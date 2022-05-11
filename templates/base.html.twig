@@ -14,6 +14,7 @@
         
     </head>
     <body>
+    <div class= "container_fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <a class="navbar-brand" href="{{ path('home') }}">Accueil</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +27,10 @@
             <a class="nav-link" href="{{ path('profil') }}">Profil</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="{{ path('app_artist_index') }}">Artistes</a>
+        </li>
+         <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_disc_index') }}">disques</a>
         </li>
     </ul>
 </div>

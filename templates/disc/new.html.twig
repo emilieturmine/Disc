@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau disque{% endblock %}
+
+{% block body %}
+    <h1>Nouveau disque</h1>
+
+    {{ include('disc/_form.html.twig') }}
+
+    <a href="{{ path('app_disc_index') }}">Retour à la liste</a>
+{% endblock %}

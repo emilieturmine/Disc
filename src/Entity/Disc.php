@@ -14,16 +14,22 @@ class Disc
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
     private $title;
 
-    #[ORM\ManyToOne(targetEntity: artiste::class, inversedBy: 'discs')]
-    private $artiste;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $year;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank]
     private $picture;
 
+    #[ORM\ManyToOne(targetEntity: Artist::class, inversedBy: 'discs')]
+    private $artist;
+
     #[ORM\Column(type: 'string', length: 255)]
-    private $label;
+    #[Assert\NotBlank]
+    private $Label;
 
     public function getId(): ?int
     {
@@ -35,26 +41,25 @@ class Disc
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    public function getArtiste(): ?artiste
+    public function getYear(): ?int
     {
-        return $this->artiste;
+        return $this->year;
     }
 
-    public function setArtiste(?artiste $artiste): self
+    public function setYear(int $year): self
     {
-        $this->artiste = $artiste;
+        $this->year = $year;
 
         return $this;
     }
 
-   
     public function getPicture(): ?string
     {
         return $this->picture;
@@ -67,15 +72,29 @@ class Disc
         return $this;
     }
 
-    public function getLabel(): ?string
+    public function getArtist(): ?artist
     {
-        return $this->label;
+        return $this->artist;
     }
 
-    public function setLabel(string $label): self
+    public function setArtist(?artist $artist): self
     {
-        $this->label = $label;
+        $this->artist = $artist;
 
         return $this;
     }
+
+    public function getLabel(): ?string
+    {
+        return $this->Label;
+    }
+
+    public function setLabel(string $Label): self
+    {
+        $this->Label = $Label;
+
+        return $this;
+    }
+    
+
 }
